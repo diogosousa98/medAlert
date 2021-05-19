@@ -6,10 +6,7 @@ body{
   overflow: hidden;
 }
 
-.ghost {
-  position: absolute;
-  left: -100%;
-}
+
 
 .framed {
   position: absolute;

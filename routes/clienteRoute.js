@@ -8,6 +8,15 @@ router.get("/", async function (req, res, next) {
   res.send(clientes);
 });
 
+router.get('/login/:cliente', async function (req, res, next) {
+  let cliente = req.params.cliente;
+  let existe = await cliente.getByNome(cliente);
+  if (existe.length != 0) res.send(true);
+  else res.send(false);
+});
+
+
+
 router.post("/", async function (req, res, next) {
   try {
     let clientes = await Cliente.create(req.body);

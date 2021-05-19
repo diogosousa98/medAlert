@@ -1,25 +1,34 @@
-<head>
+<html>
+  <head>
     <title>MedAlert</title>
-    <link rel="stylesheet" href="stylesheets/menu.css">
-    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="stylesheets/menu.css" />
+    <link rel="stylesheet" href="stylesheets/login.css" />
     <script src="javascripts/home.js"></script>
   </head>
-<main class="main">
+  <main class="main">
     <aside class="sidebar">
       <nav class="nav">
         <ul>
-          <li><a href="menu.html">Welcome</a></li>
+          <li><a href="menu.html">Bem Vindo</a></li>
           <li><a href="marcacao.html">Marcação</a></li>
           <li><a href="alertas.html">Alertas</a></li>
           <li><a href="perfil.html">Perfil</a></li>
-          <li><a onclick=logout()>Logout</a></li>
+          <li><a onclick="logout()">Logout</a></li>
         </ul>
       </nav>
     </aside>
-  
+
     <section class="content">
       <div class="container">
-        <p>Alertas</p>
+        <table id="alertas">
+          <tr>
+            <th>Nome</th>
+            <th>Dia</th>
+            <th>Hora</th>
+            <th>Estado</th>
+          </tr>
+        </table>
       </div>
     </section>
   </main>
+</html>

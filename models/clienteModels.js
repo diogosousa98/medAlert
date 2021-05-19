@@ -1,5 +1,6 @@
 var pool = require("./connection");
 
+
 module.exports.select = async () => {
   try {
     let res = await pool.query("SELECT * FROM Cliente");
@@ -12,6 +13,19 @@ module.exports.select = async () => {
     return err.message;
   }
 };
+
+
+module.exports.getByNome = async function (username) {
+  try {
+      let cliente = await pool.query('SELECT * FROM Administrador WHERE C_username = ?', username);
+      return cliente;
+  }
+  catch (err) {
+      return err;
+  }
+}
+
+
 
 module.exports.create = async (cliente) => {
     try {

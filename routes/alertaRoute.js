@@ -8,6 +8,9 @@ router.get("/", async function (req, res, next) {
   res.send(alertas);
 });
 
+
+
+
 router.post("/", async function (req, res, next) {
   try {
     let alertas = await Alerta.create(req.body);
