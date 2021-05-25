@@ -1,0 +1,13 @@
+#alertas{
+    padding: 25px;
+    width: 80%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+}
+
+td, th{
+    border: 3px solid black;
+    text-align: left;
+    padding: 15px;
+}

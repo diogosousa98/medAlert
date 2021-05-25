@@ -13,13 +13,24 @@ module.exports.select = async () => {
   }
 };
 
+module.exports.getById = async function (id) {
+  try {
+      let alerta = await pool.query('SELECT * FROM Alerta WHERE C_id = ?', id);
+      return alerta;
+  }
+  catch (err) {
+      return err;
+  }
+}
+
+
 module.exports.create = async (alerta) => {
     try {
-        let res = await pool.query('INSERT INTO Alerta (A_nomeMedicamento, A_estado, A_hour, A_date) values(?,?,?,?) ', [alerta.nomeMedicamento, alerta.estado, alerta.hora, alerta.date]);
+        let res = await pool.query('INSERT INTO Alerta (A_nomeMedicamento, A_estado, A_hour, A_date, C_id) values(?,?,?,?,?) ', [alerta.medicamento, alerta.estado, alerta.hora, alerta.dataA, alerta.C_id]);
         return res;
     }
     catch (err) {
-        console.log('An errror has occured while trying to INSERT into Reservas.\n Dumping Stack.\n', err.stack);
+        console.log('An errror has occured while trying to INSERT into Alertas.\n Dumping Stack.\n', err.stack);
         return err.message;
     }
   };

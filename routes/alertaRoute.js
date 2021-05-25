@@ -9,6 +9,10 @@ router.get("/", async function (req, res, next) {
 });
 
 
+router.get("/getById/:alertas", async function (req, res, next) {
+  let alertas = await Alerta.getById(req.params.alertas);
+  res.send(alertas);
+});
 
 
 router.post("/", async function (req, res, next) {

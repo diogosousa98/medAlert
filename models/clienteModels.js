@@ -15,9 +15,9 @@ module.exports.select = async () => {
 };
 
 
-module.exports.getByNome = async function (username) {
+module.exports.getByName = async function (username) {
   try {
-      let cliente = await pool.query('SELECT * FROM Administrador WHERE C_username = ?', username);
+      const cliente = await pool.query('SELECT * FROM Cliente WHERE C_username = ?', username);
       return cliente;
   }
   catch (err) {
