@@ -43,6 +43,6 @@ window.onload = function () {
         alert("Algo correu mal.\n Tente mais tarde.");
       }
     } else {
-      alert("Por favor preencha os campos todos caralho.");
+      alert("Por favor preencha todos os campos.");
     }
   }
