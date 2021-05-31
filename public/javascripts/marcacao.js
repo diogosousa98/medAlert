@@ -6,6 +6,20 @@ window.onload = function () {
     $("#alertaHora").timepicker({ timeFormat: "HH:mm", interval: 60 });
   };
 
+  $(function() {
+    var medicamentos = [
+      "Aerius", "Aftum", "Aquilea", "Aspirina", "Benuron",
+      "Benzac", "Bruffen", "Cêgripe", "Corega", "Daflon",
+      "Depuralina", "Digestil", "Drenaslim", "Dulcolax", "Easyslim",
+      "Eludril", "Griponal", "Kukident", "Mucosolvan", "Nurofen",
+      "Oral-B", "Paracetamol", "Strepfen", "Strepsils", "Tantum",
+      "Vaporil", "Venex", "Viagra", "Viartril", "Voltaren", "Zonegran", "Zovirax"
+    ];
+    $("#nomeMedicamento" ).autocomplete({
+      source: medicamentos
+    });
+  });
+
 
   async function submit() {
     user = JSON.parse(sessionStorage.getItem("conta"));
