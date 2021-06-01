@@ -1,13 +1,26 @@
-#alertas{
-    padding: 25px;
-    width: 80%;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
+#alertas {
+  width: 80%;
+  display: table;
 }
 
-td, th{
-    box-shadow: 0 0 5px;
-    border: 3px solid black;
-    padding: 10px;
+.tabelaAlertas {
+  overflow-y: auto;
+  height: 150px;
+}
+
+.tabelaAlertas thead th {
+  position: sticky;
+  top: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+}
+th {
+  background: #eee;
 }

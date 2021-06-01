@@ -6,28 +6,35 @@ async function createCards() {
         method: "get",
         dataType: "json"
     });
-    console.log(user.C_id)
-    for (let idx in alertas) {  
-        main.innerHTML += showInformation(alertas[idx]);
-    }
-}
 
-function showInformation(alerta) {
-    let html = "";
-        html += `<table id="alertas">
+    main.innerHTML = `<table id="alertas" class="tabelaAlertas">
+        <thead>
         <tr>
           <th>Nome</th>
           <th>Dia</th>
           <th>Hora</th>
           <th>Estado</th>
+          <th>Ações</th>
         </tr>
-        <tr>
-        <th>${alerta.A_nomeMedicamento}</th>
-        <th>${getDate(alerta.A_date)}</th>
-        <th>${alerta.A_hour}</th>
-        <th>${alerta.A_estado}</th>
-      </tr>
+        </thead>
+        <tbody>
+        </tbody>
       </table>`;
+
+    let tableAlertas = document.getElementById('alertas');
+    for (let idx in alertas) {  
+        $(tableAlertas).find('tbody').append(showInformation(alertas[idx]));
+    }
+}
+
+function showInformation(alerta) {
+    let html = `<tr>
+                <td>${alerta.A_nomeMedicamento}</td>
+                <td>${getDate(alerta.A_date)}</td>
+                <td>${alerta.A_hour}</td>
+                <td>${alerta.A_estado}</td>
+                <td><input type="button" value="Alterar Estado" id="submit" onclick="alterarEstado(${alerta.A_id})" /></td>
+            </tr>`;
     return html;
 }
 
@@ -38,3 +45,24 @@ window.onload = () => {
 function getDate(data) {
     return data.substring(data.indexOf('T'), -1);
 }
+
+async function alterarEstado(alertaID) {
+      
+    if (alertaID != "") {
+
+      let res = await $.ajax({
+        type: "PUT",
+        url: "/API/alertas/alterarEstado/" + alertaID,
+        dataType: "json",
+        contentType: "application/json",
+      });
+
+      if (res) {
+        location.reload();
+      } else {
+        alert("Algo correu mal.\n Tente mais tarde.");
+      }
+    } else {
+      alert("Por favor preencha todos os campos.");
+    }
+  }

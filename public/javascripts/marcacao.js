@@ -3,6 +3,7 @@ let user;
 window.onload = function () {
     user = JSON.parse(sessionStorage.getItem("conta"));
     $("#alertaData").datepicker({ dateFormat: "yy/mm/dd" });
+    $("#alertaDataFim").datepicker({ dateFormat: "yy/mm/dd" });
     $("#alertaHora").timepicker({ timeFormat: "HH:mm", interval: 60 });
   };
 
@@ -20,16 +21,44 @@ window.onload = function () {
     });
   });
 
-
   async function submit() {
+    let dataA = $("#alertaData").val();
+    let nome = $('#nomeMedicamento').val();
+    let hora = $('#alertaHora').val();
+  
+    let id = marcacao(dataA, nome, hora)
+
+    if (id) {
+        alert("Reserva feita!");
+        window.location = "marcacao.html";
+      } else {
+        alert("Algo correu mal.\n Tente mais tarde.");
+      }
+  }
+
+  async function submitMarcacaoMultipla() {
     user = JSON.parse(sessionStorage.getItem("conta"));
 
-    let dataA = $("#alertaData").val();
+    let dataA = new Date($("#alertaData").val());
+    let dataF = new Date($("#alertaDataFim").val());
     let hora = $('#alertaHora').val();
     let nome = $('#nomeMedicamento').val();
   
-    
-    if (
+    for (var d = dataA; d <= dataF; d.setDate(d.getDate() + 1)) {
+      let id = marcacao(formatDate(d), nome, hora)
+
+      if (!id) {
+        alert("Algo correu mal.\n Tente mais tarde.");
+      }
+    }
+    alert("Reserva feita!");
+    //window.location = "marcacaoMultipla.html";
+  }
+
+async function marcacao(dataA, nome, hora){
+  user = JSON.parse(sessionStorage.getItem("conta"));
+
+  if (
       dataA != ""&& 
       nome != ""&& 
       hora != "" 
@@ -50,13 +79,23 @@ window.onload = function () {
         dataType: "json",
         contentType: "application/json",
       });
-      if (res.insertId) {
-        alert("Reserva feita!");
-        window.location = "marcacao.html";
-      } else {
-        alert("Algo correu mal.\n Tente mais tarde.");
-      }
+
+      return res.insertId
     } else {
       alert("Por favor preencha todos os campos.");
     }
-  }
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('/');
+}

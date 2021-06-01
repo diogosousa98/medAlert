@@ -7,7 +7,8 @@ const util = require("util");
    user: 'iW2uKMrb2H',
    password: 'K2dh4sHbiy',
    database: 'iW2uKMrb2H',
-   port: '3306'
+   port: '3306',
+   timezone: 'utc'
 })
 
 // error in connection is detected when the server starts

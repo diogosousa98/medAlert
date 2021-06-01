@@ -1,35 +1,40 @@
-#alertaData{
-    padding: 10px;
-    margin: 10px;
+#alertaData {
+  padding: 10px;
+  margin: 10px;
 }
 
-#alertaHora{
-    padding: 10px;
-    margin: 10px;
+#alertaDataFim {
+  padding: 10px;
+  margin: 10px;
 }
 
-#nomeMedicamento{
-    padding: 10px;
-    margin: 10px;
+#alertaHora {
+  padding: 10px;
+  margin: 10px;
 }
 
-#submit{
-    padding: 10px;
-    margin: 10px;
-    background-color: #fa7a3e;
+#nomeMedicamento {
+  padding: 10px;
+  margin: 10px;
+}
+
+#submit {
+  padding: 10px;
+  margin: 10px;
+  background-color: #fa7a3e;
 }
 
 .formulario {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-    height: 100%;
-	width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
-.teste{
-    box-shadow: 0 0 20px;
-    border: solid 2px;
-    padding: 20px;
+.teste {
+  box-shadow: 0 0 20px;
+  border: solid 2px;
+  padding: 20px;
 }

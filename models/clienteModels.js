@@ -1,6 +1,5 @@
 var pool = require("./connection");
 
-
 module.exports.select = async () => {
   try {
     let res = await pool.query("SELECT * FROM Cliente");
@@ -14,7 +13,6 @@ module.exports.select = async () => {
   }
 };
 
-
 module.exports.getByName = async function (username) {
   try {
       const cliente = await pool.query('SELECT * FROM Cliente WHERE C_username = ?', username);
@@ -24,8 +22,6 @@ module.exports.getByName = async function (username) {
       return err;
   }
 }
-
-
 
 module.exports.create = async (cliente) => {
     try {

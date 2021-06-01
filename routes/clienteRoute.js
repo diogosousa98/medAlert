@@ -15,8 +15,6 @@ router.get('/login/:cliente', async function (req, res, next) {
   else res.send(false);
 });
 
-
-
 router.post("/", async function (req, res, next) {
   try {
     let clientes = await Cliente.create(req.body);
