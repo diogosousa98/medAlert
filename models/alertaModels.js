@@ -15,7 +15,7 @@ module.exports.select = async () => {
 
 module.exports.getById = async function (id) {
   try {
-      let alerta = await pool.query('SELECT * FROM Alerta WHERE C_id = ?', id);
+      let alerta = await pool.query('SELECT * FROM Alerta where C_id = ? order by A_date', id);
       return alerta;
   }
   catch (err) {
@@ -34,30 +34,6 @@ module.exports.create = async (alerta) => {
     }
   };
 
-module.exports.update = async (id, alerta) => {
-  try {
-    let keys = Object.keys(alerta);
-    let vals = Object.values(alerta);
-    let indexId = keys.indexOf("M_id");
-    if (indexId != -1) {
-      keys.splice(indexId, 1);
-      vals.splice(indexId, 1);
-    }
-    let res = await pool.query(
-      "UPDATE Alerta SET " + keys.join(" = ? ,") + " = ? WHERE M_id = ?",
-      [...vals, id]
-    );
-    if (res.affectedRows == 0) return "No Alertas updated";
-    else return "Alertas updated.";
-  } catch (err) {
-    console.log(
-      "An errror has occured while trying to UPDATE Alertas.\n Dumping Stack.\n",
-      err.stack
-    );
-    return err.message;
-  }
-};
-
 module.exports.alterarEstado = async (id) => {
   try {
     
@@ -73,19 +49,6 @@ module.exports.alterarEstado = async (id) => {
   } catch (err) {
     console.log(
       "An errror has occured while trying to UPDATE Alertas.\n Dumping Stack.\n",
-      err.stack
-    );
-    return err.message;
-  }
-};
-
-module.exports.delete = async (id) => {
-  try {
-    let res = await pool.query("DELETE FROM Alerta WHERE C_id = ?", id);
-    return res.affectedRows;
-  } catch (err) {
-    console.log(
-      "An errror has occured while trying to DELETE FROM Alertas.\n Dumping Stack.\n",
       err.stack
     );
     return err.message;

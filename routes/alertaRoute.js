@@ -23,17 +23,6 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-router.put("/:id", async function (req, res, next) {
-  console.log(req.body);
-  let alerta = await Alerta.update(req.params.id, req.body);
-  res.send(alerta);
-});
-
-router.delete("/:id", async function (req, res, next) {
-  let alerta = await Alerta.delete(req.params.id);
-  res.send({ rowsAffected: alerta });
-});
-
 router.put("/alterarEstado/:id", async function (req, res, next) {
   try {
     let result = await Alerta.alterarEstado(req.params.id);
