@@ -23,6 +23,17 @@ module.exports.getById = async function (id) {
   }
 }
 
+module.exports.getByIdMenu = async function (id) { 
+
+  try {
+      let alerta = await pool.query('select * from Alerta WHERE (A_date BETWEEN now() AND adddate(now(),+7)) and C_id = ? order by A_date', id);
+      return alerta;
+  }
+  catch (err) {
+      return err;
+  }
+}
+
 module.exports.create = async (alerta) => {
     try {
         let res = await pool.query('INSERT INTO Alerta (A_nomeMedicamento, A_estado, A_hour, A_date, C_id) values(?,?,?,?,?) ', [alerta.medicamento, alerta.estado, alerta.hora, alerta.dataA, alerta.C_id]);

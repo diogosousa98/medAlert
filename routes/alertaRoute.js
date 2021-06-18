@@ -12,6 +12,10 @@ router.get("/getById/:alertas", async function (req, res, next) {
   let alertas = await Alerta.getById(req.params.alertas);
   res.send(alertas);
 });
+router.get("/getByIdMenu/:alertasMenu", async function (req, res, next) {
+  let alertas = await Alerta.getByIdMenu(req.params.alertasMenu);
+  res.send(alertas);
+});
 
 router.post("/", async function (req, res, next) {
   try {

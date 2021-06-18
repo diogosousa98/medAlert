@@ -3,6 +3,9 @@
     <title>MedAlert</title>
     <link rel="stylesheet" href="stylesheets/menu.css" />
     <link rel="stylesheet" href="stylesheets/login.css" />
+    <link rel="stylesheet" href="stylesheets/alertas.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="javascripts/alerta.js"></script>
     <script src="javascripts/home.js"></script>
   </head>
   <main class="main">
@@ -13,13 +16,12 @@
           <li><a href="marcacao.html">Marcação Individual</a></li>
           <li><a href="marcacaoMultipla.html">Marcação Multipla</a></li>
           <li><a href="alertas.html">Alertas</a></li>
-          <li><a href="perfil.html">Perfil</a></li>
           <li><a onclick="logout()">Logout</a></li>
         </ul>
       </nav>
     </aside>
     <section class="content">
-      <div class="container"></div>
+      <div class="container" id="InforMenu"></div>
     </section>
     <div class="fullscreen-bg"></div>
   </main>

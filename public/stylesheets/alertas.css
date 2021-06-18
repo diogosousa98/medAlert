@@ -11,6 +11,19 @@
   overflow-y: auto;
 }
 
+#alertasMenu {
+  width: 80%;
+  display: table;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  table-layout: fixed;
+  position: relative;
+}
+
+.tabelaAlertasMenu {
+  overflow-y: auto;
+}
+
 table tr {
   background-color: #f8f8f8;
   border: 1px solid rgb(66, 66, 66);
